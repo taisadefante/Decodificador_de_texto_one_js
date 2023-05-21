@@ -1,0 +1,504 @@
+:root {
+    /* Paleta de cores do projeto */
+
+    /* VARIÁVEIS */
+    --current-method-primary-color: #0A3871;
+    --current-method-secondary-color: #D8DFE8;
+    --current-method-background-color: #F3F5FC;
+
+    /* ALURA */
+    --light-blue-100-color: #F3F5FC;
+    --dark-blue-300-color: #0A3871;
+    --light-gray-color: #D8DFE8;
+
+    /* CESAR */
+    --light-red-100-color: #fcf3f3;
+    --dark-red-300-color: #710a0a;
+    --light-red-color: #e8d8d8;
+
+    /* GLOBAL */
+    --white-color: #FFFFFF;
+    --gray-500-color: #343A40;
+    --gray-400-color: #495057;
+    --gray-300-color: #868E96;
+
+    /* Controle de responsividade das fontes */
+    font-size: 62.5%;
+}
+
+/* Reset de layout */
+* {
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    box-sizing: border-box;
+}
+
+/* Estilos globais do projeto */
+html,
+body {
+    height: 100vh;
+    font-family: 'Inter', sans-serif;
+    text-rendering: optimizeLegibility;
+    background-color: var(--current-method-background-color);
+}
+
+input,
+textarea,
+button {
+    font-family: inherit
+}
+
+/* Container maior da aplicação que distribui os espaços entre o header, a aplicação e o footer,  */
+body {
+    padding: 3% 3% 1% 3%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 24px;
+} 
+
+/* Botões - Estilos */
+.btn {
+    padding: 24px;
+    border-radius: 24px;
+    width: 100%;
+    min-width: 168px;
+    max-width: 328px;
+    font-size: 1.6rem;
+    transition: all .15s;
+}
+
+.btn.dark-blue {
+    background: var(--current-method-primary-color);
+    border: none;
+    color: var(--white-color);
+}
+
+.btn.light-gray {
+    background: var(--current-method-secondary-color);
+    border: 1px solid var(--current-method-primary-color);
+    color: var(--current-method-primary-color);
+}
+
+.btn.white {
+    background: var(--white-color);
+    border: 1px solid var(--current-method-primary-color);
+    color: var(--current-method-primary-color);
+}
+
+.btn-container {
+    width: 100%;
+    max-width: 680px;
+    margin-top: 32px;
+}
+
+.btn-encrypt-decrypt {
+    display: flex;
+}
+
+.btn-encrypt-decrypt>.btn:not(:last-child){
+    margin-right: 12px;
+}
+
+.btn-encrypt-decrypt>.btn:last-child{
+    margin-left: 12px;
+}
+
+/* Botões - Animações */
+@media (hover: hover) {
+    .btn:hover {
+        opacity: 0.7;
+        transform: scale(1.009);
+        cursor: pointer;
+    }
+}
+
+.btn:active {
+    transform: scale(1);
+    transform: translateY(1.5px);
+}
+
+/* Container header/input/output da aplicação */
+.app-container {
+    display: flex;
+    height: 100%;
+    gap: 40px;
+}
+
+/* Container que envelopa o header com o input da aplicação */
+.wrap-input-header {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 40px;
+    /* align-items: end; */
+}
+
+/* Seção de input da aplicação */
+.input-message {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    margin: 0% 0% 0% 18%;
+    padding-bottom: 32px;
+}
+
+/* Header com logo da alura */
+header {
+    margin: 0% 0% 0% 3%;
+}
+
+*.unselectable {
+    -moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+ 
+    /*
+      Introduced in IE 10.
+      See http://ie.microsoft.com/testdrive/HTML5/msUserSelect/
+    */
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.logo {
+    max-height: 48px;
+}
+
+@media (hover: hover) {
+    .logo:hover {
+        cursor: pointer;
+        animation: spinner 1.5s infinite linear;
+    }
+}
+
+/* Textarea */
+textarea {
+    border: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+
+    min-height: 30vh;
+    height: 100%;
+    width: 100%;
+    max-width: 680px;
+    resize: none;
+    background: transparent;
+
+    font-size: 3.2rem;
+    line-height: 4.3rem;
+    color: var(--current-method-primary-color);
+}
+
+textarea::placeholder {
+    color: var(--gray-300-color);
+}
+
+/* Seção de resultado da aplicação */
+.result {
+    /* layout */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    min-width: 399px;
+    max-width: 680px;
+    width: 399px;
+    height: 100%;
+    padding: 32px;
+    gap: 32px;
+
+    /* White */
+    background: var(--white-color);
+
+    /* shadow */
+    box-shadow: 0px 24px 32px -8px rgba(0, 0, 0, 0.08);
+    border-radius: 32px;
+}
+
+.msg-result {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.msg-result p {
+    word-wrap: break-word;
+    white-space: pre-wrap;
+    word-break: break-word;
+    font-size: 2.4rem;
+    line-height: 3.4rem;
+}
+
+/* Remove o overflow de texto vertical na mensagem de resultado em desktops */
+@media (min-width: 1024px) and (max-height: 1080px){
+    .msg-result p {
+        display: -webkit-box;
+        -webkit-line-clamp: 20; /** número de linhas que você quer exibir */
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}
+@media (min-width: 1024px) and (max-height: 768px){
+    .msg-result p {
+        display: -webkit-box;
+        -webkit-line-clamp: 14; /** número de linhas que você quer exibir */
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}
+
+.msg-result button{
+    margin-top: 32px;
+}
+
+.msg-not-found,
+.msg-copied {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+}
+
+.msg-not-found img{
+    margin-bottom: 32px;
+}
+
+.msg-not-found h3 {
+    font-size: 2.4rem;
+    line-height: 2.9rem;
+    color: var(--gray-500-color);
+}
+
+.msg-copied h3 {
+    font-size: 2.4rem;
+    line-height: 2.9rem;
+    color: var(--current-method-primary-color);
+}
+
+
+.msg-not-found p{
+    font-size: 1.6rem;
+    line-height: 2.4rem;
+    color: var(--gray-400-color);
+    margin-top: 1.6rem;
+}
+
+/* Footer */
+footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+footer ul {
+    display: flex;
+    gap: 9px;
+    list-style: none;
+    font-size: 1.0rem;
+    color: var(--gray-400-color);
+}
+
+footer img {
+    height: 10px;
+}
+
+footer a {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    transition: all 0.15ms;
+}
+
+footer a:hover {
+    opacity: 0.7;
+    transform: scale(1.009);
+    cursor: pointer;
+}
+
+footer a:active {
+    transform: scale(1);
+    transform: translateY(1px);
+}
+
+footer a:link {
+    color: var(--gray-400-color);
+}
+
+footer a:visited {
+    color: var(--current-method-primary-color);
+}
+
+.requirements {
+    margin: 8px 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.requirements img {
+    height: 1.8rem;
+}
+
+.requirements span {
+    font-size: 1.2rem;
+    line-height: 1.8rem;
+    color: var(--gray-400-color);
+}
+
+/* Responsividade */
+@media (min-width: 1920px){
+.input-message{
+    margin: 0% 0% 0% 24%;
+}
+
+}
+@media (max-width: 1023px) {
+    body {
+        padding: 5% 5% 2% 5%;
+    }
+    :root {
+        font-size: 54%;
+    }
+
+    .btn {
+        padding: 21px;
+        max-width: none;
+    }
+
+    .app-container {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    header {
+        margin: 12px 0 0 0;
+    }
+
+    .input-message {
+        margin: 0;
+        padding-bottom: 0;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .result {
+        min-width: 0px;
+        width: 100%;
+        padding: 24px;
+    }
+
+    .app-container {
+        height: auto;
+    }
+
+    .wrap-input-header {
+        align-items: baseline;
+    }
+
+    .msg-not-found img {
+        display: none;
+    }
+
+    textarea::placeholder {
+        content: "Digite seu texto"
+    }
+
+    .btn-encrypt-decrypt>.btn:not(:last-child){
+        margin-right: 9px;
+    }
+    
+    .btn-encrypt-decrypt>.btn:last-child{
+        margin-left: 9px;
+    }
+}
+
+@media (max-width: 424px) {
+    textarea {
+        resize: horizontal;
+    }
+
+    .btn {
+        min-width: none;
+        max-width: none;
+    }
+
+    .btn-encrypt-decrypt {
+        flex-direction: column;
+    }
+    
+    .btn-encrypt-decrypt>.btn:not(:last-child){
+        margin-bottom: 12px;
+        margin-right: 0px;
+    }
+    
+    .btn-encrypt-decrypt>.btn:last-child{
+        margin-left: 0px;
+    }
+
+    footer {
+        padding-bottom: 3%;
+    }
+}
+
+/* Animações customizadas */
+@keyframes fadeIn {
+    0% { 
+        -webkit-opacity: 0;
+        -moz-opacity: 0;
+        -ms-opacity: 0;
+        -o-opacity: 0;
+        opacity: 0;
+    }
+    100% { 
+        -webkit-opacity: 1;
+        -moz-opacity: 1;
+        -ms-opacity: 1;
+        -o-opacity: 1;
+        opacity: 1;
+    }
+}
+
+.fade-in,
+body {
+    animation: fadeIn 0.5s;
+    -webkit-animation: fadeIn 0.5s;
+    -moz-animation: fadeIn 0.5s;
+    -o-animation: fadeIn 0.5s;
+    -ms-animation: fadeIn 0.5s;
+}
+
+@keyframes spinner {
+    0% { 
+        -webkit-transform: rotate3d(0, 1, 0, 0deg);
+        -moz-transform: rotate3d(0, 1, 0, 0deg);
+        -ms-transform: rotate3d(0, 1, 0, 0deg);
+        -o-transform: rotate3d(0, 1, 0, 0deg);
+        transform: rotate3d(0, 1, 0, 0deg);
+    }
+    50% { 
+        -webkit-transform: rotate3d(0, 1, 0, 180deg);
+        -moz-transform: rotate3d(0, 1, 0, 0deg);
+        -ms-transform: rotate3d(0, 1, 0, 180deg);
+        -o-transform: rotate3d(0, 1, 0, 180deg);
+        transform: rotate3d(0, 1, 0, 180deg);
+    }
+    100% { 
+        -webkit-transform: rotate3d(0, 1, 0, 360deg);
+        -moz-transform: rotate3d(0, 1, 0, 0deg);
+        -ms-transform: rotate3d(0, 1, 0, 360deg);
+        -o-transform: rotate3d(0, 1, 0, 360deg);
+        transform: rotate3d(0, 1, 0, 360deg);
+    }
+}
