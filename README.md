@@ -1,6 +1,8 @@
 # Decodificador de Texto - Oracle Next Education
 Boas vindas ao primeiro desafio!<br/>
 
+deploy:https://taisadefante.github.io/Decodificador_de_texto_one_js/
+
 As "chaves" de criptografia que utilizaremos são:<br/>
 A letra "e" é convertida para "enter"<br/>
 A letra "i" é convertida para "imes"<br/>
